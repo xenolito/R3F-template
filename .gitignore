@@ -2,6 +2,7 @@
 *.code-workspace
 node_modules
 public
+build
 
 #OSX hidden folders
 .DS_Store

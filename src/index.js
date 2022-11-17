@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Leva } from 'leva'
+// import { Leva } from 'leva'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Experience from './Experience'
@@ -12,7 +12,7 @@ const root = createRoot(document.querySelector('#root'))
 
 root.render(
     <StrictMode>
-        <Leva collapsed />
+        {/* <Leva collapsed /> */}
         <Canvas camera={{
             fov: 45,
         }}>
