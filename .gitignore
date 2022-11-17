@@ -1,0 +1,13 @@
+#project dependencies
+*.code-workspace
+node_modules
+public
+
+#OSX hidden folders
+.DS_Store
+#temp files
+*.tmp
+*-
+
+
+
