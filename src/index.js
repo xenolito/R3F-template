@@ -20,7 +20,7 @@ root.render(
             position: [-4, 3, 6]
             }}
         >
-            <Experience />
+            <Experience />q
         </Canvas>
     </StrictMode>
 )
