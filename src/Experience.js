@@ -32,7 +32,7 @@ const Experience = () => {
             <mesh ref={cube}>
                 <boxGeometry />
                 {/* <meshNormalMaterial wireframe={ cubeWireFrame } /> */}
-                <meshNormalMaterial wireframe={ false } />
+                <meshStandardMaterial color="mediumpurple" wireframe={ false } />
             </mesh>
 
             <mesh rotation-x={- Math.PI * 0.5} position-y={ -1 }>
