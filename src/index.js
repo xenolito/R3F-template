@@ -15,6 +15,7 @@ root.render(
         {/* <Leva collapsed /> */}
         <Canvas camera={{
             fov: 45,
+            position: [-4, 3, 6]
         }}>
             <Experience />
         </Canvas>

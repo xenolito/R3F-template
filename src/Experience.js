@@ -26,12 +26,20 @@ const Experience = () => {
             {/* { showPerf &&  <Perf position="top-left" /> } */}
 
             <OrbitControls makeDefault />
+            <directionalLight position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+            <ambientLight intensity={ 0.5 } />
 
-            <mesh ref={ cube }>
+            <mesh ref={cube}>
                 <boxGeometry />
                 {/* <meshNormalMaterial wireframe={ cubeWireFrame } /> */}
                 <meshNormalMaterial wireframe={ false } />
             </mesh>
+
+            <mesh rotation-x={- Math.PI * 0.5} position-y={ -1 }>
+                <planeGeometry args={[10, 10]} />
+                <meshStandardMaterial color="yellowgreen" />
+            </mesh>
+
         </>
   )
 }
