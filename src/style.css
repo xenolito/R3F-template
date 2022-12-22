@@ -5,5 +5,8 @@ html, body, #root {
     top: 0;
     left: 0;
     overflow: hidden;
+}
 
+canvas {
+    touch-action: none;
 }
