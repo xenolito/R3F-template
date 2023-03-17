@@ -1,7 +1,8 @@
 import { OrbitControls } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import { Debug, RigidBody, Physics } from '@react-three/rapier'
 // import { useControls } from 'leva'
-// import { Perf } from 'r3f-perf'
+import { Perf } from 'r3f-perf'
 import React, { useRef } from 'react'
 
 const Experience = () => {
@@ -17,29 +18,50 @@ const Experience = () => {
     // })
 
     useFrame((state, delta) => {
-        cube.current.rotation.y += delta
+        // cube.current.rotation.y += delta
         // console.log(delta)
     })
 
     return (
         <>
-            {/* { showPerf &&  <Perf position="top-left" /> } */}
+            <Perf position="top-left" />
+            {/* <color args={ ['#ff0000']} attach="background" /> */}
 
             <OrbitControls makeDefault />
-            <directionalLight position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+            <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
             <ambientLight intensity={ 0.5 } />
 
-            <mesh ref={cube}>
-                <boxGeometry />
-                {/* <meshNormalMaterial wireframe={ cubeWireFrame } /> */}
-                <meshStandardMaterial color="mediumpurple" wireframe={ false } />
-            </mesh>
+            <Physics>
+                <Debug />
 
-            <mesh rotation-x={- Math.PI * 0.5} position-y={ -1 }>
-                <planeGeometry args={[10, 10]} />
-                <meshStandardMaterial color="yellowgreen" />
-            </mesh>
+                {/* <RigidBody>
+                    <mesh ref={cube} castShadow position-x={1} position-y={2} >
+                        <boxGeometry args={[3,2,1]}/>
+                        <meshStandardMaterial color="mediumpurple" wireframe={ false } />
+                    </mesh>
+                </RigidBody> */}
 
+                <RigidBody colliders="trimesh">
+                    <mesh castShadow rotation-x={Math.PI * 0.28} position-y={ 1.5 }>
+                        <torusBufferGeometry args={[1, 0.3, 16, 32]} />
+                        <meshStandardMaterial color="mediumpurple" />
+                    </mesh>
+                </RigidBody>
+
+                <RigidBody colliders="ball">
+                    <mesh castShadow position-x={0} position-y={ 4 }>
+                        <sphereBufferGeometry args={[.8, 22, 22]} />
+                        <meshStandardMaterial color="orange" />
+                    </mesh>
+                </RigidBody>
+
+                <RigidBody type="fixed">
+                    <mesh receiveShadow rotation-x={- Math.PI * 0.5} position-y={-1}>
+                        <boxBufferGeometry args={[10, 10, 0.5]} />
+                        <meshStandardMaterial color="yellowgreen" />
+                    </mesh>
+                </RigidBody>
+            </Physics>
         </>
   )
 }
